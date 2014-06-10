@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
+  devise_for :logins
   #resources :comments
 
   resources :posts do
       resources :comments
     end
+    root :to => "home#index"
+  #root :to => "posts#index"
+
+  # devise_scope :logins do
+  #   get "sign_out", to: "devise/sessions#new"
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

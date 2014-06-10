@@ -1,10 +1,20 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_login!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+     #@posts = Post.all
+    @posts = Post.where login_id: current_login.id
+
+
+    #@posts = Post.where ( params[:id]) 
+    #    @comments = Comment.where(post_id: params[:post_id])
+
+   
+
+
   end
 
   # GET /posts/1
@@ -24,9 +34,13 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    #@post.login = current_login
+        #@post = current_login.posts.create post_params 
+#if user_signed_in?
+@post = current_login.posts.create post_params
+    #@post = Post.new(post_params)
 
-    respond_to do |format|
+        respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
@@ -36,6 +50,7 @@ class PostsController < ApplicationController
       end
     end
   end
+#end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -69,6 +84,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+      #binding.pry
       params.require(:post).permit(:title, :body)
     end
 end
