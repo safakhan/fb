@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610092243) do
+ActiveRecord::Schema.define(version: 20140610141119) do
 
-  create_table "comments", force: true do |t|
-    t.integer  "post_id"
+  create_table "comments", id: false, force: true do |t|
     t.text     "body"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20140610092243) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.string   "username"
+    t.string   "picture"
   end
 
   add_index "logins", ["email"], name: "index_logins_on_email", unique: true, using: :btree

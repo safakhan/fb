@@ -1,4 +1,11 @@
-<h1>Listing posts</h1>
+<h1> <%= current_login.username %> 's Profile</h1>
+
+<div>
+<%= image_tag( current_login.picture , class: 'list_image') %>
+
+<!--< image_tag(product.image_url, class: 'list_image') %> -->
+
+</div>
 
 <table>
   <thead>
