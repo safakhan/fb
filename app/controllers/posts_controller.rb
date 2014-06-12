@@ -33,12 +33,12 @@ class PostsController < ApplicationController
       end
   
   def friends
-   # @logins = Login.all
-    # @logins.each do |login|
-     #   if current_login.friends.include?(login)
-     #     @posts = Post.where login_id: login.id
-     #   end
-#end
+   @logins = Login.all
+     @logins.each do |login|
+        if current_login.friends.include?(login)
+          @posts = Post.where login_id: login.id
+        end
+      end
 
   end
 
