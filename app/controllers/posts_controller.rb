@@ -32,14 +32,11 @@ class PostsController < ApplicationController
   def show
       end
   
-  def friends
-   @logins = Login.all
-     @logins.each do |login|
-        if current_login.friends.include?(login)
-          @posts = Post.where login_id: login.id
-        end
-      end
-
+  def friends 
+    @login = Login.find(params[:id])
+    if current_login.friends.include?(@login)
+      @posts = Post.where login_id: @login.id
+    end
   end
 
   # GET /posts/new

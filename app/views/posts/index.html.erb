@@ -47,10 +47,10 @@
 
 <% if login_signed_in? %>
   <%@logins.each do |login| %>
-    
     <%if current_login.friends.include?(login) %>
     <div>    
     <%= login.username%> 
+    <%= link_to login.username, friends_post_path(login) %>
 
     <br />
     </div>
