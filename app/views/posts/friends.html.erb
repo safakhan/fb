@@ -15,7 +15,7 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= post.title %></td>
         <td><%= post. body %></td>
         <td><%= link_to 'Show', post %></td>
