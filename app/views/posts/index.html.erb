@@ -29,8 +29,40 @@
   </tbody>
 </table>
 
-<br>
+<br />
 
+<%# @logins.each do |l| %>
+  <%#= l.username %><br />
+<%# end %>
+<h3>Suggested Friends</h3> 
+<% if login_signed_in? %>
+  <%@logins.each do |login| %>
+    <% unless login == current_login || current_login.requested_friends.include?(login) || current_login.friends.include?(login) || current_login.pending_friends.include?(login) %>
+    <%= login.username%> <%= link_to 'Add as a Friend', login_friends_path(:login_id => current_login.id, :friend_id => login.id), method: :post%> <br/>
+    <% end %>
+    <% end %>
+<% end %>
+
+<h3>Your Friends</h3> 
+
+<% if login_signed_in? %>
+  <%@logins.each do |login| %>
+    
+    <%if current_login.friends.include?(login) %>
+    <div>    
+    <%= login.username%> 
+
+    <br />
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<br />
+
+<%= link_to 'Friend List Statuses', login_friends_path(current_login) %>
+
+<br />
 
 <%= link_to 'New Post', new_post_path %>
 

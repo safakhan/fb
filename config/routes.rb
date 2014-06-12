@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :friends
+
+  resources :friendships
+
   get 'home/index'
 
   devise_for :logins
@@ -6,8 +10,15 @@ Rails.application.routes.draw do
 
   resources :posts do
       resources :comments
+      member do
+        get :friends
+        end
     end
     root :to => "home#index"
+
+    resources :logins do 
+    resources :friends
+  end
   #root :to => "posts#index"
 
   # devise_scope :logins do

@@ -6,7 +6,17 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
      #@posts = Post.all
+       @logins = Login.all
+     
     @posts = Post.where login_id: current_login.id
+    #@friends = Friends.all
+    #@friend = Login.find(params[:friend_id])
+
+
+  
+
+
+    #@login = Login.where.not(id: current_login.id).first
 
 
     #@posts = Post.where ( params[:id]) 
@@ -20,6 +30,16 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+      end
+  
+  def friends
+   # @logins = Login.all
+    # @logins.each do |login|
+     #   if current_login.friends.include?(login)
+     #     @posts = Post.where login_id: login.id
+     #   end
+#end
+
   end
 
   # GET /posts/new

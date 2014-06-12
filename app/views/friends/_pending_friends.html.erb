@@ -1,0 +1,13 @@
+<% unless @login.pending_friends.empty? %>
+<% @login.pending_friends.each do |u| %>
+<%= u.username%>
+Since <%= u.created_at.to_s(:long) %>
+<% if login_signed_in? && @login = current_login %>
+<%= link_to '[Accept]', login_friend_path(:login_id => current_login, :id => u), :method => :put, :confirm => 'Accept friend request! Are you sure?' %> |
+<%= link_to '[Reject]', login_friend_path(:login_id => current_login, :id => u), :method => :delete, :confirm => 'Reject friend request! Are you sure?' %>
+<% end %>
+<% end %>
+<% else %>
+None
+<% end %>
+<br />
