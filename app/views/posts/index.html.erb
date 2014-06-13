@@ -49,8 +49,11 @@
   <%@logins.each do |login| %>
     <%if current_login.friends.include?(login) %>
     <div>    
-    <%= login.username%> 
-    <%= link_to login.username, friends_post_path(login) %>
+
+    <%= login.username%>  <br />
+   Go to <%= link_to login.username, friends_post_path(login) %> 's page
+
+   <br />
 
     <br />
     </div>

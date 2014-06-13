@@ -1,12 +1,13 @@
 <% unless @login == current_login %>
 You do not have permission to access this page!
 <% else %>
-Current Friends:
+<h2> Current Friends: </h2>
 <%= render :partial => 'friends/friends' %>
-Requested Friends:
+<h2> Requested Friends: </h2>
 <%= render :partial => 'friends/requested_friends' %>
-Pending Friends:
+<h2>Pending Friends: </h2>
 <%= render :partial => 'friends/pending_friends' %>
+
 <%= link_to '[back]', posts_path %>
 
 
